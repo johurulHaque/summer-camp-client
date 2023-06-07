@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../Login/SocialLogin";
 const Register = () => {
   const {
     register,
@@ -137,11 +138,7 @@ const Register = () => {
                   <input
                     type="password"
                     {...register("confirm", {
-                      required: true,
-                      //   minLength: 6,
-                      //   maxLength: 20,
-                      //   pattern:
-                      //     /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                      required: true,                     
                     })}
                     placeholder="Confirm password"
                     className="input input-bordered"
@@ -203,12 +200,12 @@ const Register = () => {
                 {err && <span className="text-red-600">{err}</span>}
               </div>
             </form>
-            <p>
+            <p className="text-end text-2xl">
               <small>
-                Already have an account <Link to="/login">Login</Link>
+                Already have an account ? <Link to="/login"><button className="btn btn-link"> Login</button></Link>
               </small>
             </p>
-            {/* <SocialLogin></SocialLogin> */}
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

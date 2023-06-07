@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   // onSubmit={handleLogin}
@@ -60,12 +61,12 @@ const Login = () => {
               />
             </div>
           </form>
-          <p>
+          <p className="text-end text-2xl">
             <small>
-              New Here? <Link to="/register">Create an account</Link>{" "}
+              New Here? <Link to="/register"><button className="btn btn-link"> Register</button></Link>
             </small>
           </p>
-          {/* <SocialLogin></SocialLogin> */}
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
