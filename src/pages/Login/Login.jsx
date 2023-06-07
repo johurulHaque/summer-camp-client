@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const {
@@ -15,13 +16,21 @@ const Login = () => {
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [passwordType, setPasswordType] = useState("password");
+
+  const togglePassword = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
 
   const from = location.state?.from?.pathname || "/";
 
-  const onSubmit = (data) => {    
+  const onSubmit = (data) => {
     signIn(data.email, data.password).then((result) => {
       const user = result.user;
-      // console.log(user);
       Swal.fire({
         position: "center",
         icon: "success",
@@ -62,14 +71,19 @@ const Login = () => {
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
+                <span onClick={togglePassword} className="text-2xl text-accent">
+                {passwordType === "password" ? <FaEye /> : <FaEyeSlash />}
+              </span>
               </label>
               <input
-                type="password"
+                type={passwordType}
                 {...register("password", { required: true })}
                 placeholder="password"
                 className="input input-bordered"
+                
               />
-               {errors.password && (
+             
+              {errors.password && (
                 <span className="text-red-600">Email is required</span>
               )}
               {/* <label className="label">
@@ -79,7 +93,7 @@ const Login = () => {
               </label> */}
             </div>
             <div className="form-control mt-6">
-              <input className="btn btn-primary" type="submit" value="Login" />
+              <input className="btn btn-accent " type="submit" value="Login" />
             </div>
           </form>
           <p className="text-end text-2xl">
