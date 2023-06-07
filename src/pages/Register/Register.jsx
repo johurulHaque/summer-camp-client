@@ -193,7 +193,7 @@ const Register = () => {
 
               <div className="form-control mt-6">
                 <input
-                  className="btn btn-primary"
+                  className="btn btn-accent text-white"
                   type="submit"
                   value="Sign Up"
                 />

@@ -42,6 +42,7 @@ const Login = () => {
     });
   };
   return (
+    <>
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col md:flex-row-reverse">
         <div className="text-center md:w-1/2 lg:text-left">
@@ -93,7 +94,7 @@ const Login = () => {
               </label> */}
             </div>
             <div className="form-control mt-6">
-              <input className="btn btn-accent " type="submit" value="Login" />
+              <input className="btn btn-accent text-white" type="submit" value="Login" />
             </div>
           </form>
           <p className="text-end text-2xl">
@@ -108,6 +109,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
