@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -6,15 +6,23 @@ import Swal from "sweetalert2";
 const Register = () => {
   const {
     register,
-    handleSubmit, 
-    reset,   
+    handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
+  const [err, setErr] = useState("");
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
-  
+
   const onSubmit = (data) => {
+    setErr("")
+
+    if(data.password  !== data.confirm){
+      setErr('Password and confirm password must be same')
+      return;
+    }   
+
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
@@ -48,11 +56,10 @@ const Register = () => {
     });
   };
 
-
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">          
+        <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
               <div className="flex gap-3">
@@ -129,16 +136,19 @@ const Register = () => {
                   </label>
                   <input
                     type="password"
-                    {...register("confirm password", {
+                    {...register("confirm", {
                       required: true,
-                    //   minLength: 6,
-                    //   maxLength: 20,
-                    //   pattern:
-                    //     /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                      //   minLength: 6,
+                      //   maxLength: 20,
+                      //   pattern:
+                      //     /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                     })}
                     placeholder="Confirm password"
                     className="input input-bordered"
                   />
+                  {errors.confirm?.type === "required" && (
+                    <p className="text-red-600">Confirm Password is required</p>
+                  )}
                 </div>
               </div>
 
@@ -190,6 +200,7 @@ const Register = () => {
                   type="submit"
                   value="Sign Up"
                 />
+                {err && <span className="text-red-600">{err}</span>}
               </div>
             </form>
             <p>
