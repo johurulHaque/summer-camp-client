@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAllClasses from '../../../hooks/usaAllClassess';
 
 const ManageClasses = () => {
     const [classes] = useAllClasses();
+    const [disabled,setDisabled] = useState(false);
     console.log(classes)
+    const handleApproved = (event)=>{
+        console.log(event.target)
+        // setDisabled(true)
+    }
     return (
         <div>
       <div className="overflow-x-auto">
@@ -32,7 +37,12 @@ const ManageClasses = () => {
                 <td>{cls?.instructorEmail}</td>
                 <td>{cls?.status}</td>
                 <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
+                    {
+                        cls.status === 'pending' ?   <button className="btn btn-ghost btn-xs" >Approved</button> :   <button disabled className="btn btn-ghost btn-xs" >Approved</button>
+                    }
+                
+                  <button className="btn btn-ghost btn-xs" >Deny</button> <br />
+                  <button className="btn btn-ghost btn-xs">FeedBack</button>
                 </th>
               </tr>
             ))}
