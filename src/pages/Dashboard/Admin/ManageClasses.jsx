@@ -1,11 +1,11 @@
-import React from "react";
-import useClasses from "../../../hooks/useClasses";
+import React from 'react';
+import useAllClasses from '../../../hooks/usaAllClassess';
 
-const MyClass = () => {
-  const [classes] = useClasses();
-  console.log("[classes]", classes);
-  return (
-    <div>
+const ManageClasses = () => {
+    const [classes] = useAllClasses();
+    console.log(classes)
+    return (
+        <div>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -40,7 +40,7 @@ const MyClass = () => {
         </table>
       </div>
     </div>
-  );
+    );
 };
 
-export default MyClass;
+export default ManageClasses;
