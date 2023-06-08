@@ -1,0 +1,73 @@
+[
+    {
+      "name": "Yoga Basics",
+      "image": "yoga.jpg",
+      "instructorName": "",
+      "instructorEmail": "",
+      "seats": 10,
+      "students":3,
+      "price": 20.99,
+      "status": "pending"
+    },
+    {
+      "name": "Cardio Kickboxing",
+      "image": "kickboxing.jpg",
+      "instructorName": "",
+      "instructorEmail": "",
+      "seats": 8,
+      "students":3,
+      "price": 25.99,
+      "status": "pending"
+    },
+    {
+      "name": "Basketball Skills Training",
+      "image": "basketball.jpg",
+      "instructorName": "",
+      "instructorEmail": "",
+      "seats": 12,
+      "students":3,
+      "price": 15.99,
+      "status": "pending"
+    },
+    {
+      "name": "Chess Masterclass",
+      "image": "chess.jpg",
+      "instructorName": "",
+      "instructorEmail": "",
+      "seats": 6,
+      "students":3,
+      "price": 10.99,
+      "status": "pending"
+    },
+    {
+      "name": "Cricket Coaching",
+      "image": "cricket.jpg",
+      "instructorName": "",
+      "instructorEmail": "",
+      "seats": 15,
+      "students":3,
+      "price": 18.99,
+      "status": "pending"
+    },
+    {
+      "name": "Hockey Skills Camp",
+      "image": "hockey.jpg",
+      "instructorName": "",
+      "instructorEmail": "",
+      "seats": 10,
+      "students":3,
+      "price": 22.99,
+      "status": "pending"
+    },
+    {
+      "name": "Skiing Lessons",
+      "image": "skiing.jpg",
+      "instructorName": "",
+      "instructorEmail": "",
+      "seats": 5,
+      "students":3,
+      "price": 30.99,
+      "status": "pending"
+    }
+  ]
+  
