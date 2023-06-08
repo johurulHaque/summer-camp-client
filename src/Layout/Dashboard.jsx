@@ -50,10 +50,8 @@ const Dashboard = () => {
                     {
                         isInstructor && <>
                             <li><NavLink to="/dashboard/"><FaHome></FaHome> Instructor Home</NavLink></li>
-                            <li><NavLink to="/dashboard/addClasses"> <FaUtensils></FaUtensils> Add Items</NavLink></li>
-                            <li><NavLink to="/dashboard/"><FaWallet></FaWallet> Manage Items</NavLink></li>
-                            <li><NavLink to="/dashboard/"><FaBook></FaBook> Manage Bookings</NavLink></li>
-                            <li><NavLink to="/dashboard/"><FaUsers></FaUsers> All Users</NavLink></li>                            
+                            <li><NavLink to="/dashboard/addClasses"> <FaUtensils></FaUtensils> Add a Class</NavLink></li>
+                            <li><NavLink to="/dashboard/myClasses"><FaWallet></FaWallet> My Class</NavLink></li>                                                   
                         </> 
                         }
                       
