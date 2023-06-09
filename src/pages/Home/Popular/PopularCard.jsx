@@ -6,7 +6,7 @@ const PopularCard = ({ sport }) => {
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
-        <img src="https://swiperjs.com/demos/images/nature-3.jpg" alt="Shoes" />
+        <img src="https://swiperjs.com/demos/images/nature-3.jpg" alt="class image" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">

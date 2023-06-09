@@ -55,7 +55,7 @@ const ManageClasses = () => {
                 <td>{cls?.name}</td>
                 <td><img src={cls.image} alt="" className="w-10" /></td>
                 <td>{cls?.price}</td>                
-                <td>{cls?.seat}</td>                
+                <td>{cls?.seats}</td>                
                 <td>{cls?.enrolledStudent}</td>
                 <td>{cls?.instructorName}</td>
                 <td>{cls?.instructorEmail}</td>

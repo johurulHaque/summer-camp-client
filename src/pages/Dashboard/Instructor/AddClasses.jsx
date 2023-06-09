@@ -17,14 +17,14 @@ const AddClasses = () => {
 
   const onSubmit = (data) => {
    
-    const { name, image, price, instructorName, instructorEmail,seat } = data;
+    const { name, image, price, instructorName, instructorEmail,seats } = data;
     const classInfo = {
       name,
       image,
       price: parseFloat(price),
       instructorName,
       instructorEmail,
-      seat,      
+      seats,      
       status:"pending",
       enrolledStudent: 0,
     };
@@ -127,7 +127,7 @@ const AddClasses = () => {
             </label>
             <input
               type="number"
-              {...register("seat", { required: true, maxLength: 120 })}
+              {...register("seats", { required: true, maxLength: 120 })}
             //   placeholder="Price Type here"
               className="input input-bordered w-full "
             />
