@@ -8,17 +8,18 @@ import {
   FaBook,
   FaUsers,
 } from "react-icons/fa";
+import useCart from "../hooks/useCart";
 // import useCart from "../hooks/useCart";
 // import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
-  // const [cart] = useCart();
+  const [cart] = useCart();
 
   // TODO: load data from the server to have dynamic isAdmin based on Data
-  const isAdmin = true ;
+  const isAdmin = false ;
   const isInstructor = false;
-  const isUser = false  ;
-  const cart = 10;
+  const isUser = true  ;
+  // const cart = 10;
   // const [isAdmin] = useAdmin();
   // console.log(isAdmin)
 
@@ -54,12 +55,11 @@ const Dashboard = () => {
                         }
                       
                         { isUser && <>
-                            <li><NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>
-                            <li><NavLink to="/dashboard/"><FaCalendarAlt></FaCalendarAlt> Reservations</NavLink></li>
+                            <li><NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>                            
                             <li><NavLink to="/dashboard/"><FaWallet></FaWallet> Payment History</NavLink></li>
                             <li>
-                                <NavLink to="/dashboard/"><FaShoppingCart></FaShoppingCart> My Cart
-                                    <span className="badge inl badge-secondary">+{cart?.length || 0}</span>
+                                <NavLink to="/dashboard/selectClass"><FaShoppingCart></FaShoppingCart>  My Selected Class
+                                    <span className="badge inl badge-neutral">+{cart?.length || 0}</span>
                                 </NavLink>
 
                             </li>

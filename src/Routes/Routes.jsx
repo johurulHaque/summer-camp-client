@@ -11,6 +11,7 @@ import FeedBack from "../pages/Dashboard/Admin/FeedBack";
 import ManageUser from "../pages/Dashboard/Admin/ManageUser";
 import InstructorPage from "../pages/InstructorPage/InstructorPage";
 import ClassPage from "../pages/ClassPage/ClassPage";
+import SelectedClass from "../pages/Dashboard/User/SelectedClass";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,11 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: <Dashboard></Dashboard>,
     children:[
+      // user 
+      {
+        path: "selectClass",
+        element: <SelectedClass></SelectedClass>,
+      },
       // instructor 
       {
         path: "addClasses",

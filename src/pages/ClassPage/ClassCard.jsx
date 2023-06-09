@@ -1,12 +1,64 @@
 import React, { useState } from 'react';
 import useUser from '../../hooks/useUser';
 import useAuth from '../../hooks/useAuth';
+import useCart from '../../hooks/useCart';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 const ClassCard = ({approvedClass,role}) => {    
-    const { seats, image, instructorName, name, price, students } = approvedClass;
-    const bgColor = seats - students;
-    console.log(bgColor)
+    const { _id,seats, image, instructorName, name, price, students } = approvedClass;
+
+    const {user} = useAuth();
+    const [cart, refetch] = useCart();
+    const navigate = useNavigate();
+    const location = useLocation();
+    
+    
+    // console.log(cart)
+
+    const handleAddToCart = () => {
+
+        if(user && user.email){
+            const cartItem = {classId: _id, instructorName, name, image, price, email: user.email}
+            fetch('http://localhost:5000/carts', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(cartItem)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId){
+                    refetch(); // refetch cart to update the number of items in the cart
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Class is selected',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+            })
+        }
+        else{
+            Swal.fire({
+                title: 'Please login to order the food',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  navigate('/login', {state: {from: location}})
+                }
+              })
+        }
+    }
+
+
    
 
 // console.log(role)
@@ -31,7 +83,7 @@ const ClassCard = ({approvedClass,role}) => {
           </div>
           <div>
             {
-                (role == ("instructor" || "admin") || (seats - students == 0))  ? <button className='btn btn-primary btn-outline' disabled  >Select</button> :  <button className='btn btn-primary btn-outline' >Select</button>
+                (role == ("instructor" || "admin") || (seats - students == 0))  ? <button className='btn btn-primary btn-outline' disabled  >Select</button> :  <button className='btn btn-primary btn-outline' onClick={handleAddToCart} >Select</button>
             }
            
           </div>
