@@ -16,7 +16,7 @@ const PopularCard = ({ sport }) => {
         <p>{instructorName || "jony"}</p>
         <div className="card-actions justify-end">
           <div className="badge  badge-primary badge-outline">
-            Available {seats} seats
+            Available {seats - students} seats
           </div>
           <div className="badge  badge-accent badge-outline">
             Total student {students}

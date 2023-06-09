@@ -10,6 +10,7 @@ import ManageClasses from "../pages/Dashboard/Admin/ManageClasses";
 import FeedBack from "../pages/Dashboard/Admin/FeedBack";
 import ManageUser from "../pages/Dashboard/Admin/ManageUser";
 import InstructorPage from "../pages/InstructorPage/InstructorPage";
+import ClassPage from "../pages/ClassPage/ClassPage";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: "instructor",
         element: <InstructorPage></InstructorPage>,
+      },
+      {
+        path: "classPage",
+        element: <ClassPage></ClassPage>,
       },
     ],
   },
