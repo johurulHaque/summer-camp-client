@@ -18,6 +18,7 @@ const Register = () => {
 
   const onSubmit = (data) => {
     setErr("")
+    console.log(data)
 
     if(data.password  !== data.confirm){
       setErr('Password and confirm password must be same')
@@ -30,7 +31,7 @@ const Register = () => {
 
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          const saveUser = { name: data.name, email: data.email,role:"student" };
+          const saveUser = { name: data.name, email: data.email,role:"student",image:data.photoURL,number:data.number,address:data.address };
           fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {

@@ -32,7 +32,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
+      <div className="navbar  bg-opacity-30 max-w-screen-xl bg-black text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -69,7 +69,8 @@ const NavBar = () => {
           {user ? (
             <>
 
-            <img src={user.photoURL} alt=""  className="w-10 h-10 rounded-full" title={user.displayName} />
+            <img src={user.photoURL}  referrerPolicy="no-referrer"
+ alt=""  className="w-10 h-10 rounded-full" title={user.displayName} />
 
               <button onClick={handleLogOut} className="btn btn-sm btn-warning btn-outline">
                 LogOut
