@@ -7,6 +7,8 @@ import Dashboard from "../Layout/Dashboard";
 import AddClasses from "../pages/Dashboard/Instructor/AddClasses";
 import MyClass from "../pages/Dashboard/Instructor/MyClass";
 import ManageClasses from "../pages/Dashboard/Admin/ManageClasses";
+import FeedBack from "../pages/Dashboard/Admin/FeedBack";
+import ManageUser from "../pages/Dashboard/Admin/ManageUser";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,7 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: <Dashboard></Dashboard>,
     children:[
+      // instructor 
       {
         path: "addClasses",
         element: <AddClasses></AddClasses>,
@@ -39,9 +42,18 @@ export const router = createBrowserRouter([
         path: "myClasses",
         element: <MyClass></MyClass>,
       },
+      // admin
       {
         path: "ManageClasses",
         element: <ManageClasses></ManageClasses>,
+      },
+      {
+        path: "feedback/:id",
+        element: <FeedBack></FeedBack>,
+      },
+      {
+        path: "manageUser",
+        element: <ManageUser></ManageUser>,
       },
 
     ]

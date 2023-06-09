@@ -1,14 +1,38 @@
 import React, { useState } from 'react';
-import useAllClasses from '../../../hooks/usaAllClassess';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
+import useAllClasses from '../../../hooks/useAllClasses';
 
 const ManageClasses = () => {
-    const [classes] = useAllClasses();
-    const [disabled,setDisabled] = useState(false);
-    console.log(classes)
-    const handleApproved = (event)=>{
-        console.log(event.target)
-        // setDisabled(true)
+    const [allClasses,refetch] = useAllClasses();
+    // const [disabled,setDisabled] = useState(false);
+    console.log(allClasses)
+
+ 
+      
+
+    const handleStatus = (cls,status) =>{
+        console.log(cls)
+        fetch(`http://localhost:5000/class/?id=${cls._id}&status=${status}`, {
+            method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount){
+                refetch();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `Status is changed to ${status}!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
     }
+   
+
     return (
         <div>
       <div className="overflow-x-auto">
@@ -27,7 +51,7 @@ const ManageClasses = () => {
             </tr>
           </thead>
           <tbody>
-            {classes.map((cls) => (<tr key={cls.id}>                
+            {allClasses.map((cls) => (<tr key={cls.id}>                
                 <td>{cls?.name}</td>
                 <td><img src={cls.image} alt="" className="w-10" /></td>
                 <td>{cls?.price}</td>                
@@ -38,11 +62,14 @@ const ManageClasses = () => {
                 <td>{cls?.status}</td>
                 <th>
                     {
-                        cls.status === 'pending' ?   <button className="btn btn-ghost btn-xs" >Approved</button> :   <button disabled className="btn btn-ghost btn-xs" >Approved</button>
+                        cls.status === 'pending' ?   <button className="btn btn-ghost btn-xs" onClick={()=> handleStatus(cls,"approved")}  >Approved</button> :   <button disabled className="btn btn-ghost btn-xs" >Approved</button>
+                    }
+                    {
+                        cls.status === 'pending' ?   <button className="btn btn-ghost btn-xs" onClick={()=> handleStatus(cls,"deny")}>Deny</button> :   <button disabled className="btn btn-ghost btn-xs" >Deny</button>
                     }
                 
-                  <button className="btn btn-ghost btn-xs" >Deny</button> <br />
-                  <button className="btn btn-ghost btn-xs">FeedBack</button>
+                    <Link to={`/dashboard/feedback/${cls._id}`}>
+                  <button className="btn btn-ghost btn-xs">FeedBack</button></Link>
                 </th>
               </tr>
             ))}
