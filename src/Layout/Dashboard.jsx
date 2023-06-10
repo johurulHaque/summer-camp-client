@@ -57,6 +57,7 @@ const Dashboard = () => {
                         { isUser && <>
                             <li><NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>                            
                             <li><NavLink to="/dashboard/"><FaWallet></FaWallet> Payment History</NavLink></li>
+                            <li><NavLink to="/dashboard/enrollClass"><FaWallet></FaWallet> Payment History</NavLink></li>
                             <li>
                                 <NavLink to="/dashboard/selectClass"><FaShoppingCart></FaShoppingCart>  My Selected Class
                                     <span className="badge inl badge-neutral">+{cart?.length || 0}</span>

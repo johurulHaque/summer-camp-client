@@ -83,7 +83,7 @@ const SelectedClass = () => {
                   </button>
                 </td>
                 <td>
-                  <Link to={`/dashboard/payment/${item.price}`}>
+                  <Link to={`/dashboard/payment/${item._id}`}>
                     <button className="btn btn-warning btn-sm">PAY</button>
                   </Link>
                 </td>

@@ -25,7 +25,7 @@ const ClassPage = () => {
     return (
         <div className='grid grid-cols-3 gap-4'>
             {
-                approvedClasses.map(approvedClass => <ClassCard key={approvedClass._id} approvedClass={approvedClass} role={currentUser.role}></ClassCard>)
+                approvedClasses.map(approvedClass => <ClassCard key={approvedClass._id} approvedClass={approvedClass} role={currentUser?.role}></ClassCard>)
             }
             <h1>This is class page.</h1>
             

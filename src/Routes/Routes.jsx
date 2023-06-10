@@ -13,6 +13,7 @@ import InstructorPage from "../pages/InstructorPage/InstructorPage";
 import ClassPage from "../pages/ClassPage/ClassPage";
 import SelectedClass from "../pages/Dashboard/User/SelectedClass";
 import Payment from "../pages/Dashboard/User/Payment/Payment";
+import EnrolledClass from "../pages/Dashboard/User/EnrolledClass";
 
 export const router = createBrowserRouter([
   {
@@ -51,7 +52,11 @@ export const router = createBrowserRouter([
         element: <SelectedClass></SelectedClass>,
       },
       {
-        path: "payment/:price",
+        path: "enrollClass",
+        element: <EnrolledClass></EnrolledClass>,
+      },
+      {
+        path: "payment/:id",
         element: <Payment></Payment>,
       },
       // instructor 
