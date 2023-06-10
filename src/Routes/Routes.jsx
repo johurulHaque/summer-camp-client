@@ -12,6 +12,7 @@ import ManageUser from "../pages/Dashboard/Admin/ManageUser";
 import InstructorPage from "../pages/InstructorPage/InstructorPage";
 import ClassPage from "../pages/ClassPage/ClassPage";
 import SelectedClass from "../pages/Dashboard/User/SelectedClass";
+import Payment from "../pages/Dashboard/User/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: "selectClass",
         element: <SelectedClass></SelectedClass>,
+      },
+      {
+        path: "payment/:price",
+        element: <Payment></Payment>,
       },
       // instructor 
       {
