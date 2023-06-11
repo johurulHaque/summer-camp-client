@@ -131,7 +131,7 @@ const Register = () => {
                   )}
                   {errors.password?.type === "pattern" && (
                     <p className="text-red-600">
-                      Password must have one Uppercase , one special character.
+                      Must have one capital letter , one special character.
                     </p>
                   )}
                 </div>

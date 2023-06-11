@@ -97,9 +97,9 @@ const CheckoutForm = ({ cartItem }) => {
   
           if (res.data.paymentResult.insertedId) {
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
-              title: "Your work has been saved",
+              title: "Your payment is successfully processed.",
               showConfirmButton: false,
               timer: 1500,
             });

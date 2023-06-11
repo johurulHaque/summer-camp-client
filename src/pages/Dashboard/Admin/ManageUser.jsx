@@ -49,6 +49,7 @@ const handleMakeInstructor = (user) =>{
   return (
     <div>
       <div className="overflow-x-auto">
+        <h2 className="text-center text-2xl">Admin/Manage Users</h2>
         <table className="table">
           {/* head */}
           <thead>
@@ -56,6 +57,7 @@ const handleMakeInstructor = (user) =>{
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -71,7 +73,7 @@ const handleMakeInstructor = (user) =>{
                     </button>
                   ) : (
                     <button
-                      className="btn btn-ghost btn-xs"
+                      className="btn btn-accent btn-xs"
                       onClick={() => handleMakeAdmin(user)}
                     >
                       Make Admin
@@ -84,7 +86,7 @@ const handleMakeInstructor = (user) =>{
                   ) : (
                     <button
                       onClick={() => handleMakeInstructor(user)}
-                      className="btn btn-ghost btn-xs"
+                      className="btn btn-primary btn-xs"
                     >
                       Instructor
                     </button>

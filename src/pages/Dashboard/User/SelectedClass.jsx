@@ -62,14 +62,7 @@ const SelectedClass = () => {
               <tr key={item._id}>
                 <td>{index + 1}</td>
                 <td>
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src={item.image}
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
+                  <img src={item.image} alt="image" className="w-20 h-24" />
                 </td>
                 <td>{item.name}</td>
                 <td>{item.instructorName}</td>

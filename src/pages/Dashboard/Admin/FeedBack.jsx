@@ -1,10 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const FeedBack = () => {
   const {id} = useParams();
-//   console.log(id);
+  const navigate = useNavigate();
   const handleFeedback =(event) =>{
     event.preventDefault();
     const form = event.target;
@@ -31,6 +31,7 @@ const FeedBack = () => {
                     showConfirmButton: false,
                     timer: 1500
                   })
+                  navigate('/dashboard/ManageClasses')
             }
         })
     // console.log(id)

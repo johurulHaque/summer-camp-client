@@ -7,6 +7,7 @@ import {
   FaUtensils,
   FaBook,
   FaUsers,
+  FaAddressCard,
 } from "react-icons/fa";
 import useCart from "../hooks/useCart";
 import useRole from "../hooks/useRole";
@@ -16,11 +17,11 @@ import useRole from "../hooks/useRole";
 const Dashboard = () => {
   const [cart] = useCart();
   const [role] = useRole();
-  console.log(role)
+  console.log(role);
 
   // const isAdmin = false;
   // const isInstructor = false;
-  // const isUser = true;  
+  // const isUser = true;
 
   return (
     <div className="drawer lg:drawer-open">
@@ -34,15 +35,13 @@ const Dashboard = () => {
           Open drawer
         </label>
       </div>
-      <div className="drawer-side bg-[#D1A054]">
+      <div className="drawer-side bg-accent">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80">
           {role == "admin" && (
             <>
               <li>
-                <NavLink to="/dashboard/adminHome">
-                  <FaHome></FaHome> Admin Home
-                </NavLink>
+              <span className="text-2xl text-fuchsia-500 " >Dashboard | Admin</span>
               </li>
               <li>
                 <NavLink to="/dashboard/ManageClasses">
@@ -59,13 +58,11 @@ const Dashboard = () => {
           {role == "instructor" && (
             <>
               <li>
-                <NavLink to="/dashboard/">
-                  <FaHome></FaHome> Instructor Home
-                </NavLink>
+              <span className="text-2xl text-fuchsia-500 " >Dashboard | Instructor</span>
               </li>
               <li>
                 <NavLink to="/dashboard/addClasses">
-                  <FaUtensils></FaUtensils> Add a Class
+                  <FaAddressCard></FaAddressCard> Add a Class
                 </NavLink>
               </li>
               <li>
@@ -79,9 +76,7 @@ const Dashboard = () => {
           {role == "user" && (
             <>
               <li>
-                <NavLink to="/dashboard/userHome">
-                  <FaHome></FaHome> User Home
-                </NavLink>
+                <span className="text-2xl text-fuchsia-500 " >Dashboard | User</span>
               </li>
               <li>
                 <NavLink to="/dashboard/paymentHistory">
@@ -90,13 +85,13 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/enrollClass">
-                  <FaWallet></FaWallet> Enrolled Class
+                  <FaAddressCard></FaAddressCard> My Enrolled Classes
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/selectClass">
-                  <FaShoppingCart></FaShoppingCart> My Selected Class
-                  <span className="badge inl badge-neutral">
+                  <FaShoppingCart></FaShoppingCart> My Selected Classes
+                  <span className="badge inl badge-secondary ">
                     +{cart?.length || 0}
                   </span>
                 </NavLink>
@@ -106,7 +101,7 @@ const Dashboard = () => {
           <div className="divider"></div>
           <li>
             <NavLink to="/">
-              <FaHome></FaHome> Home
+              <FaHome></FaHome> Home Page
             </NavLink>
           </li>
         </ul>

@@ -30,61 +30,85 @@ const ManageClasses = () => {
   return (
     <div>
       <div className="overflow-x-auto">
+      <h2 className="text-center">Admin/Manage Classes</h2>
         <table className="table">
           {/* head */}
           <thead>
             <tr>
-              <th>Name</th>
               <th>Image</th>
+              <th>Name</th>
               <th>Price</th>
               <th>Seat</th>
-              <th>enrolledStudent</th>
-              <th>instructorName</th>
+              <th>Student</th>
+              <th>Instructor</th>
               <th>instructorEmail</th>
               <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {adminClasses.map((cls) => (
               <tr key={cls.id}>
-                <td>{cls?.name}</td>
                 <td>
-                  <img src={cls.image} alt="" className="w-10" />
+                  <img src={cls.image} alt="class image" className="w-20 h-24"  />
                 </td>
+                <td>{cls?.name}</td>                
                 <td>{cls?.price}</td>
                 <td>{cls?.seats}</td>
                 <td>{cls?.enrolledStudent}</td>
                 <td>{cls?.instructorName}</td>
                 <td>{cls?.instructorEmail}</td>
-                <td>{cls?.status}</td>
+                <td>
+                {cls?.status == "approved" ? 
+                    <div className="badge badge-accent badge-outline">
+                      Approved
+                    </div>
+                   : 
+                    ""
+                  }
+                  {cls?.status == "pending" ? 
+                    <div className="badge badge-primary badge-outline">
+                      Pending
+                    </div>
+                   : 
+                    ""
+                  }
+                  {cls?.status == "deny" ? 
+                    <div className="badge badge-secondary badge-outline">
+                      Deny
+                    </div>
+                   : 
+                   ""
+                  }
+                </td>
                 <th>
                   {cls.status === "pending" ? (
                     <button
-                      className="btn btn-ghost btn-xs"
+                    className="btn btn-xs btn-accent"
                       onClick={() => handleStatus(cls, "approved")}
                     >
                       Approved
                     </button>
                   ) : (
-                    <button disabled className="btn btn-ghost btn-xs">
+                    <button disabled  className="btn btn-xs ">
                       Approved
                     </button>
                   )}
                   {cls.status === "pending" ? (
                     <button
-                      className="btn btn-ghost btn-xs"
+                      className="btn btn-xs btn-primary"
                       onClick={() => handleStatus(cls, "deny")}
                     >
                       Deny
                     </button>
                   ) : (
-                    <button disabled className="btn btn-ghost btn-xs">
+                    <button disabled  className="btn btn-xs ">
                       Deny
                     </button>
                   )}
 
                   <Link to={`/dashboard/feedback/${cls._id}`}>
-                    <button className="btn btn-ghost btn-xs">FeedBack</button>
+                    <button  className="btn btn-xs btn-warning ">FeedBack</button>
                   </Link>
                 </th>
               </tr>

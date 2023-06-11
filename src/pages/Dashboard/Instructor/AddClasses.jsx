@@ -90,7 +90,8 @@ const AddClasses = () => {
             </label>
             <input
               type="file"
-              {...register("image", { required: true })}
+              {...register("image")}
+              // {...register("image", { required: true })}
               className="file-input file-input-bordered w-full "
             />
           </div>
