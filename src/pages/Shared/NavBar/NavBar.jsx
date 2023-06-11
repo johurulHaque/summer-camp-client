@@ -33,8 +33,8 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar  bg-opacity-50 max-w-screen-xl bg-black text-white">
-        <div className="navbar-start">
+      <div className="navbar bg-black bg-opacity-50 max-w-screen-xl text-white">
+        <div className="navbar-start z-10">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
@@ -54,15 +54,15 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-black bg-opacity-50 rounded-box w-52"
             >
               {navOptions}
             </ul>
           </div>
           <Link to="/">
             <div className="flex justify-center items-center gap-2">
-              <img src="./images.png" alt="" className="w-16" />
-              <span className="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-amber-500">
+              <img src="./logo.png" alt="" className="w-10 md:w-16" />
+              <span className="font-extrabold text-transparent text-xl md:text-2xl md: bg-clip-text bg-gradient-to-r from-purple-400 to-amber-500">
                 Sports Academy
               </span>
             </div>
