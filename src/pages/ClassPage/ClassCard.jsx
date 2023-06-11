@@ -7,15 +7,14 @@ import Swal from 'sweetalert2';
 
 
 const ClassCard = ({approvedClass,role}) => {    
-    const { _id,seats, image, instructorName, name, price, students } = approvedClass;
+    const { _id,seats, image, instructorName, name, price, enrolledStudent } = approvedClass;
 
     const {user} = useAuth();
     const [cart, refetch] = useCart();
     const navigate = useNavigate();
-    const location = useLocation();
-    
-    
-    // console.log(cart)
+    const location = useLocation();   
+    // console.log(role)
+
 
     const handleAddToCart = () => {
 
@@ -33,7 +32,7 @@ const ClassCard = ({approvedClass,role}) => {
                 if(data.insertedId){
                     refetch(); // refetch cart to update the number of items in the cart
                     Swal.fire({
-                        position: 'top-end',
+                        position: 'center',
                         icon: 'success',
                         title: 'Class is selected',
                         showConfirmButton: false,
@@ -44,7 +43,7 @@ const ClassCard = ({approvedClass,role}) => {
         }
         else{
             Swal.fire({
-                title: 'Please login to order the food',
+                title: 'Please login to select the class',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -65,25 +64,25 @@ const ClassCard = ({approvedClass,role}) => {
     return (
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" alt="class image" />
+          <img src={image} alt="class image" />
         </figure>
-        <div className="card-body" style={{ background: (seats-students) ? '' : 'red' }}>
+        <div className="card-body" style={{ background: (seats-enrolledStudent) ? '' : 'red' }}>
           <h2 className="card-title">
             {name}
             <div className="badge badge-secondary">{price}</div>
           </h2>
-          <p>{instructorName || "jony"}</p>
+          <p>{instructorName}</p>
           <div className="card-actions justify-end">
             <div className="badge  badge-primary badge-outline">
-              Available {seats - students} seats
+              Available {seats - enrolledStudent} seats
             </div>
             <div className="badge  badge-accent badge-outline">
-              Total student {students}
+              Total student {enrolledStudent}
             </div>
           </div>
           <div>
             {
-                (role == ("instructor" || "admin") || (seats - students == 0))  ? <button className='btn btn-primary btn-outline' disabled  >Select</button> :  <button className='btn btn-primary btn-outline' onClick={handleAddToCart} >Select</button>
+                ((role == "instructor" || role == "admin") || (seats - enrolledStudent == 0))  ? <button className='btn btn-primary btn-outline' disabled  >Select</button> :  <button className='btn btn-primary btn-outline' onClick={handleAddToCart} >Select</button>
             }
            
           </div>

@@ -9,19 +9,18 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import useCart from "../hooks/useCart";
+import useRole from "../hooks/useRole";
 // import useCart from "../hooks/useCart";
 // import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
+  const [role] = useRole();
+  console.log(role)
 
-  // TODO: load data from the server to have dynamic isAdmin based on Data
-  const isAdmin = false ;
-  const isInstructor = false;
-  const isUser = true  ;
-  // const cart = 10;
-  // const [isAdmin] = useAdmin();
-  // console.log(isAdmin)
+  // const isAdmin = false;
+  // const isInstructor = false;
+  // const isUser = true;  
 
   return (
     <div className="drawer lg:drawer-open">
@@ -38,37 +37,79 @@ const Dashboard = () => {
       <div className="drawer-side bg-[#D1A054]">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80">
+          {role == "admin" && (
+            <>
+              <li>
+                <NavLink to="/dashboard/adminHome">
+                  <FaHome></FaHome> Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/ManageClasses">
+                  <FaUtensils></FaUtensils> Manage Classes
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageUser">
+                  <FaWallet></FaWallet> Manage User
+                </NavLink>
+              </li>
+            </>
+          )}
+          {role == "instructor" && (
+            <>
+              <li>
+                <NavLink to="/dashboard/">
+                  <FaHome></FaHome> Instructor Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/addClasses">
+                  <FaUtensils></FaUtensils> Add a Class
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/myClasses">
+                  <FaWallet></FaWallet> My Class
+                </NavLink>
+              </li>
+            </>
+          )}
 
-                    {
-                        isAdmin && <>
-                            <li><NavLink to="/dashboard/adminHome"><FaHome></FaHome> Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/ManageClasses"> <FaUtensils></FaUtensils> Manage Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/manageUser"><FaWallet></FaWallet> Manage User</NavLink></li>                            
-                        </> 
-                        }
-                    {
-                        isInstructor && <>
-                            <li><NavLink to="/dashboard/"><FaHome></FaHome> Instructor Home</NavLink></li>
-                            <li><NavLink to="/dashboard/addClasses"> <FaUtensils></FaUtensils> Add a Class</NavLink></li>
-                            <li><NavLink to="/dashboard/myClasses"><FaWallet></FaWallet> My Class</NavLink></li>                                                   
-                        </> 
-                        }
-                      
-                        { isUser && <>
-                            <li><NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink></li>                            
-                            <li><NavLink to="/dashboard/"><FaWallet></FaWallet> Payment History</NavLink></li>
-                            <li><NavLink to="/dashboard/enrollClass"><FaWallet></FaWallet> Payment History</NavLink></li>
-                            <li>
-                                <NavLink to="/dashboard/selectClass"><FaShoppingCart></FaShoppingCart>  My Selected Class
-                                    <span className="badge inl badge-neutral">+{cart?.length || 0}</span>
-                                </NavLink>
-
-                            </li>
-                        </>
-                    }
-                    <div className="divider"></div>
-                    <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>                    
-                </ul>
+          {role == "user" && (
+            <>
+              <li>
+                <NavLink to="/dashboard/userHome">
+                  <FaHome></FaHome> User Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/paymentHistory">
+                  <FaWallet></FaWallet> Payment History
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/enrollClass">
+                  <FaWallet></FaWallet> Enrolled Class
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/selectClass">
+                  <FaShoppingCart></FaShoppingCart> My Selected Class
+                  <span className="badge inl badge-neutral">
+                    +{cart?.length || 0}
+                  </span>
+                </NavLink>
+              </li>
+            </>
+          )}
+          <div className="divider"></div>
+          <li>
+            <NavLink to="/">
+              <FaHome></FaHome> Home
+            </NavLink>
+          </li>
+        </ul>
       </div>
     </div>
   );

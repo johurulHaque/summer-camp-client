@@ -1,18 +1,19 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
-      logOut()
-          .then(() => { })
-          .catch(error => console.log(error));
-  }
-
- 
-
+    logOut()
+      .then(() => {
+        navigate('/login')
+      })
+      .catch((error) => console.log(error));
+  };
   const navOptions = (
     <>
       <li>
@@ -32,7 +33,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar  bg-opacity-30 max-w-screen-xl bg-black text-white">
+      <div className="navbar  bg-opacity-50 max-w-screen-xl bg-black text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -58,8 +59,13 @@ const NavBar = () => {
               {navOptions}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
-            Sports Academy
+          <Link to="/">
+            <div className="flex justify-center items-center gap-2">
+              <img src="./images.png" alt="" className="w-16" />
+              <span className="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-amber-500">
+                Sports Academy
+              </span>
+            </div>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -68,19 +74,30 @@ const NavBar = () => {
         <div className="navbar-end">
           {user ? (
             <>
+              <img
+                src={user.photoURL}
+                referrerPolicy="no-referrer"
+                alt=""
+                className="w-10 h-10 rounded-full"
+                title={user.displayName}
+              />
 
-            <img src={user.photoURL}  referrerPolicy="no-referrer"
- alt=""  className="w-10 h-10 rounded-full" title={user.displayName} />
-
-              <button onClick={handleLogOut} className="btn btn-sm btn-warning btn-outline">
-                LogOut
+              <button
+                onClick={handleLogOut}
+                className="btn btn-sm btn-warning btn-outline"
+              >
+                LogOut <FaSignOutAlt></FaSignOutAlt>
               </button>
             </>
           ) : (
             <>
-
               <li className="list-none">
-              <Link to="/login" className="btn btn-sm btn-active btn-accent">Login</Link>
+                <Link
+                  to="/login"
+                  className="btn btn-sm btn-active text-white btn-accent"
+                >
+                  <FaSignInAlt></FaSignInAlt> Login
+                </Link>
               </li>
             </>
           )}
@@ -91,5 +108,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-            

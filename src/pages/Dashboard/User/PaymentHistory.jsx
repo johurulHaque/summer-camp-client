@@ -1,12 +1,11 @@
-import React from "react";
-import useEnrollClass from "../../../hooks/useEnrollClass";
+import React from 'react';
+import useEnrollClass from '../../../hooks/useEnrollClass';
 
-const EnrolledClass = () => {
-  const [enrolled] = useEnrollClass();
+const PaymentHistory = () => {
+    const [enrolled] = useEnrollClass();
 
-  
-  return (
-    <div className="w-full">
+    return (
+        <div className="w-full">
       {/* <Helmet>
             <title>Bistro Boss | My Cart</title>
           </Helmet> */}
@@ -21,7 +20,7 @@ const EnrolledClass = () => {
               <th>Class Name</th>
               <th>Instructor Name</th>
               <th>Price</th>
-              <th>Date</th>
+              <th>Transaction Id</th>
             </tr>
           </thead>
           <tbody>
@@ -34,14 +33,14 @@ const EnrolledClass = () => {
                 <td>{cls.name}</td>
                 <td>{cls.instructorName}</td>
                 <td>${cls.price}</td>
-                <td>{cls.date}</td>
+                <td>{cls.transactionId}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
     </div>
-  );
+    );
 };
 
-export default EnrolledClass;
+export default PaymentHistory;

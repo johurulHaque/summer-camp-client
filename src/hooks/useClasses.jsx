@@ -10,8 +10,8 @@ const useClasses = () => {
         queryKey: ['class', user?.email],
         enabled: !loading,      
         queryFn: async () => {
-            // const res = await axiosSecure(`/class?email=${user?.email}`)
-            const res = await axiosSecure(`/class?email=jony@gmail.com`)
+            const res = await axiosSecure(`/class?email=${user?.email}`)
+            // const res = await axiosSecure(`/class?email=jony@gmail.com`)
             console.log('res from axios', res)
             return res.data;
         },

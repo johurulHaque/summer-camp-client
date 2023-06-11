@@ -1,10 +1,10 @@
 import React from "react";
-import useUser from "../../../hooks/useUser";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useUserAdmin from "../../../hooks/useUserAdmin";
 
 const ManageUser = () => {
-  const [users, refetch] = useUser();
+  const [usersAdmin, refetch] = useUserAdmin();
 
   const handleMakeAdmin = (user) => {
     fetch(`http://localhost:5000/users/admin/${user._id}`, {
@@ -59,7 +59,7 @@ const handleMakeInstructor = (user) =>{
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {usersAdmin.map((user) => (
               <tr key={user.id}>
                 <td>{user?.name}</td>
                 <td>{user?.email}</td>

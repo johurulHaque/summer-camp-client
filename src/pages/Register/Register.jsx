@@ -13,7 +13,7 @@ const Register = () => {
   } = useForm();
 
   const [err, setErr] = useState("");
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile,logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
@@ -26,12 +26,10 @@ const Register = () => {
     }   
 
     createUser(data.email, data.password).then((result) => {
-      const loggedUser = result.user;
-      // console.log(loggedUser);
-
+      const loggedUser = result.user;      
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          const saveUser = { name: data.name, email: data.email,role:"student",image:data.photoURL,number:data.number,address:data.address };
+          const saveUser = { name: data.name, email: data.email,role:"user",image:data.photoURL,number:data.number,address:data.address };
           fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
@@ -46,11 +44,16 @@ const Register = () => {
                 Swal.fire({
                   position: "center",
                   icon: "success",
-                  title: "Successfully created user.",
+                  title: `Successfully created new user named: ${data.name}`,
                   showConfirmButton: false,
                   timer: 1500,
                 });
-                navigate("/");
+                logOut()
+                .then(() => {
+                  navigate("/login");
+                 })
+                .catch(error => console.log(error));
+                
               }
             });
         })

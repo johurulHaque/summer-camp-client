@@ -1,12 +1,14 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
 
-// const image_hosting_token = import.meta.env.VITE_Image_upload_token;
+const image_hosting_token = import.meta.env.VITE_Image_upload_token;
 
 const AddClasses = () => {
   const [axiosSecure] = useAxiosSecure();
-  //   const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
+  const { user } = useAuth();
+  const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
 
   const {
     register,
@@ -16,32 +18,49 @@ const AddClasses = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-   
-    const { name, image, price, instructorName, instructorEmail,seats } = data;
-    const classInfo = {
-      name,
-      image,
-      price: parseFloat(price),
-      instructorName,
-      instructorEmail,
-      seats,      
-      status:"pending",
-      enrolledStudent: 0,
-    };
-    console.log(classInfo)
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
 
-    axiosSecure.post("/class", classInfo).then((data) => {
-        if (data.data.acknowledged) {
-        //   reset();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: false,
-            timer: 1500,
+    fetch(image_hosting_url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imageResponse) => {
+        if (imageResponse.success) {
+          const imgURL = imageResponse.data.display_url;
+
+          const { name,  price, instructorName, instructorEmail, seats } =
+            data;
+          const classInfo = {
+            name,
+            image: imgURL,
+            price: parseFloat(price),
+            instructorName,
+            instructorEmail,
+            seats: parseInt(seats),
+            status: "pending",
+            enrolledStudent: 0,
+          };
+
+          axiosSecure.post("/class", classInfo).then((data) => {
+            if (data.data.acknowledged) {
+              reset();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Class is saved for admin review!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
           });
+
+          // console.log(item);
         }
       });
+
+    // console.log(classInfo);
   };
 
   return (
@@ -70,7 +89,7 @@ const AddClasses = () => {
               </span>
             </label>
             <input
-              type="url"
+              type="file"
               {...register("image", { required: true })}
               className="file-input file-input-bordered w-full "
             />
@@ -97,7 +116,8 @@ const AddClasses = () => {
                 required: true,
                 maxLength: 120,
               })}
-              //   defaultValue="jony@gmailcom"
+              readOnly
+              defaultValue={user.displayName}
               className="input input-bordered w-full "
             />
           </div>
@@ -111,14 +131,14 @@ const AddClasses = () => {
                 required: true,
                 maxLength: 120,
               })}
+              readOnly
+              defaultValue={user.email}
               className="input input-bordered w-full "
             />
           </div>
         </div>
 
         <div className="flex my-5 gap-4">
-
-
           <div className="form-control w-full ">
             <label className="label">
               <span className="label-text font-semibold">
@@ -128,7 +148,7 @@ const AddClasses = () => {
             <input
               type="number"
               {...register("seats", { required: true, maxLength: 120 })}
-            //   placeholder="Price Type here"
+              //   placeholder="Price Type here"
               className="input input-bordered w-full "
             />
           </div>
