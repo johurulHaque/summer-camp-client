@@ -1,12 +1,15 @@
-* Sort out of some feature of ToysHome.
-![Test Image 3](/logo.png)
-
-
-   *  This is about toy market place. Some Feature is enabled here.
-   *  In this site new seller can register here for further purpose.
-   *  Seller can add their own toy for sell, can delete their existing.
-   *  Also can update toy data.
-   *  Normal user only see the toy in this market place.
-   *  Some route is in private where no other can enter. This is protected for login user.
+*Sports Academy ![Sports Academy](public/logo.png)
+* Some feature of Sports Academy.
+   *  This is site about Sports Academy. In sports related service in listed.
+   *  In this site anyone can register as a normal user,user can be promoted as instructor or admin by a default admin.
+   *  Instructor can add class what they take,and wait for admin observation.
+   *  Admin can make the class approved, deny and also give a feedback.
+   *  In user dashboard , user can pay for selected class.
+   *  In dashboard user,instructor and admin route in protected, only specified role is permission to enter the dashboard.
+* In this project use some interesting package,they are listed down.
+   *  react router for client side routing
+   *  react icon , sweeetalert for interesting alert 
+   *  react hookform,axios,tanstack react query
+   *  Here we also implement react stripe for payment intregation 
 * Site link
  [Click me to go to Sports Academy!](https:///)

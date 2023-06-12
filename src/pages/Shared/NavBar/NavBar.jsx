@@ -7,6 +7,10 @@ const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
+
+
+  
+
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -27,7 +31,7 @@ const NavBar = () => {
       </li>
       <li>
         <Link to="/dashboard"> Dashboard</Link>
-      </li>
+      </li>    
     </>
   );
 

@@ -64,7 +64,7 @@ const ClassCard = ({approvedClass,role}) => {
     return (
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
-          <img src={image} alt="class image" />
+          <img src={image} alt="class image" className='w-full h-72'/>
         </figure>
         <div className="card-body" style={{ background: (seats-enrolledStudent) ? '' : 'red' }}>
           <h2 className="card-title">
