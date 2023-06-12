@@ -8,7 +8,7 @@ const ManageClasses = () => {
   console.log(adminClasses);
 
   const handleStatus = (cls, status) => {    
-    fetch(`http://localhost:5000/class/?id=${cls._id}&status=${status}`, {
+    fetch(`https://sports-academy-server-delta.vercel.app/class/?id=${cls._id}&status=${status}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

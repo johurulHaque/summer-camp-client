@@ -30,7 +30,7 @@ const Register = () => {
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
           const saveUser = { name: data.name, email: data.email,role:"user",image:data.photoURL,number:data.number,address:data.address };
-          fetch("http://localhost:5000/users", {
+          fetch("https://sports-academy-server-delta.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

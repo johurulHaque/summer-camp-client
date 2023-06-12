@@ -11,7 +11,7 @@ const FeedBack = () => {
     const feedback = form.feedback.value;
 
     console.log(feedback)
-    fetch(`http://localhost:5000/class/feedback/${id}`, {
+    fetch(`https://sports-academy-server-delta.vercel.app/class/feedback/${id}`, {
             method: 'POST',
             headers:{
                 'content-type':'application/json'

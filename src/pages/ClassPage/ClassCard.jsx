@@ -20,7 +20,7 @@ const ClassCard = ({approvedClass,role}) => {
 
         if(user && user.email){
             const cartItem = {classId: _id, instructorName, name, image, price, email: user.email}
-            fetch('http://localhost:5000/carts', {
+            fetch('https://sports-academy-server-delta.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -66,7 +66,7 @@ const ClassCard = ({approvedClass,role}) => {
         <figure>
           <img src={image} alt="class image" className='w-full h-72'/>
         </figure>
-        <div className="card-body" style={{ background: (seats-enrolledStudent) ? '' : 'red' }}>
+        <div className="card-body" style={{ background: (seats) ? '' : 'red' }}>
           <h2 className="card-title">
             {name}
             <div className="badge badge-secondary">{price}</div>
@@ -74,7 +74,7 @@ const ClassCard = ({approvedClass,role}) => {
           <p>{instructorName}</p>
           <div className="card-actions justify-end">
             <div className="badge  badge-primary badge-outline">
-              Available {seats - enrolledStudent} seats
+              Available {seats} seats
             </div>
             <div className="badge  badge-accent badge-outline">
               Total student {enrolledStudent}
@@ -82,7 +82,7 @@ const ClassCard = ({approvedClass,role}) => {
           </div>
           <div>
             {
-                ((role == "instructor" || role == "admin") || (seats - enrolledStudent == 0))  ? <button className='btn btn-primary btn-outline' disabled  >Select</button> :  <button className='btn btn-primary btn-outline' onClick={handleAddToCart} >Select</button>
+                ((role == "instructor" || role == "admin") || (seats == 0))  ? <button className='btn btn-primary btn-outline' disabled  >Select</button> :  <button className='btn btn-primary btn-outline' onClick={handleAddToCart} >Select</button>
             }
            
           </div>

@@ -17,11 +17,13 @@ import EnrolledClass from "../pages/Dashboard/User/EnrolledClass";
 import PaymentHistory from "../pages/Dashboard/User/PaymentHistory";
 import PrivateRoute from "./PrivateRoute";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

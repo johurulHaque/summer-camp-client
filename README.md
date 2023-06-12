@@ -12,4 +12,4 @@
    *  react hookform,axios,tanstack react query
    *  Here we also implement react stripe for payment intregation 
 * Site link
- [Click me to go to Sports Academy!](https:///)
+ [Click me to go to Sports Academy!](https://sports-academy-655d4.web.app/)

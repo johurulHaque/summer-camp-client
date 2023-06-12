@@ -45,12 +45,12 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/ManageClasses">
-                  <FaUtensils></FaUtensils> Manage Classes
+                  <FaBook></FaBook> Manage Classes
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manageUser">
-                  <FaWallet></FaWallet> Manage User
+                  <FaUsers></FaUsers> Manage User
                 </NavLink>
               </li>
             </>

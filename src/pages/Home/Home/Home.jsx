@@ -6,7 +6,10 @@ const Home = () => {
     return (
         <div>
             <Slider></Slider>
-            <Popular></Popular>           
+            <h2 className='text-3xl text-center mt-4 text-accent font-semibold'>---- Popular Classes ----</h2>
+            <Popular></Popular>  
+            <h2 className='text-3xl text-center mt-4 text-accent font-semibold'>---- Popular Instructors ----</h2>  
+
         </div>
     );
 };
