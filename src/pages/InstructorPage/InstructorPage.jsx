@@ -4,12 +4,8 @@ import InstructorCard from "./InstructorCard";
 
 const InstructorPage = () => {
   const [users] = useUser();
-
-//   const [instructor, setInstructor] = useState([]);
   const  instructors = users.filter(user => user.role === 'instructor')
-  console.log(instructors)
-
-//   console.log(users);
+  
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mt-2  md:mt-4">
         {
