@@ -10,7 +10,7 @@ const MyClass = () => {
       <h3 className="text-center text-3xl">Instructor/My classes</h3>
         <table className="table table-zebra">
           {/* head */}
-          <thead>
+          <thead className="bg-black text-white">
             <tr>
               <th>#</th>
               <th>Class Name</th>

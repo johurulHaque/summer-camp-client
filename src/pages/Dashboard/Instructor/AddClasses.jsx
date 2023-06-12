@@ -30,8 +30,7 @@ const AddClasses = () => {
         if (imageResponse.success) {
           const imgURL = imageResponse.data.display_url;
 
-          const { name,  price, instructorName, instructorEmail, seats } =
-            data;
+          const { name, price, instructorName, instructorEmail, seats } = data;
           const classInfo = {
             name,
             image: imgURL,
@@ -167,8 +166,13 @@ const AddClasses = () => {
             />
           </div>
         </div>
-
-        <input className="btn btn-sm mt-4" type="submit" value="submit" />
+        <div className="flex justify-center items-center">
+          <input
+            className="btn btn-block btn-primary mt-4"
+            type="submit"
+            value="submit"
+          />
+        </div>
       </form>
     </div>
   );

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "../Login/SocialLogin";
+import { Helmet } from "react-helmet-async";
 const Register = () => {
   const {
     register,
@@ -13,23 +14,30 @@ const Register = () => {
   } = useForm();
 
   const [err, setErr] = useState("");
-  const { createUser, updateUserProfile,logOut } = useContext(AuthContext);
+  const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    setErr("")
-    console.log(data)
+    setErr("");
+    console.log(data);
 
-    if(data.password  !== data.confirm){
-      setErr('Password and confirm password must be same')
+    if (data.password !== data.confirm) {
+      setErr("Password and confirm password must be same");
       return;
-    }   
+    }
 
     createUser(data.email, data.password).then((result) => {
-      const loggedUser = result.user;      
+      const loggedUser = result.user;
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          const saveUser = { name: data.name, email: data.email,role:"user",image:data.photoURL,number:data.number,address:data.address };
+          const saveUser = {
+            name: data.name,
+            email: data.email,
+            role: "user",
+            image: data.photoURL,
+            number: data.number,
+            address: data.address,
+          };
           fetch("https://sports-academy-server-delta.vercel.app/users", {
             method: "POST",
             headers: {
@@ -49,11 +57,10 @@ const Register = () => {
                   timer: 1500,
                 });
                 logOut()
-                .then(() => {
-                  navigate("/login");
-                 })
-                .catch(error => console.log(error));
-                
+                  .then(() => {
+                    navigate("/login");
+                  })
+                  .catch((error) => console.log(error));
               }
             });
         })
@@ -63,6 +70,9 @@ const Register = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Sports Academy | Resister</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
@@ -142,7 +152,7 @@ const Register = () => {
                   <input
                     type="password"
                     {...register("confirm", {
-                      required: true,                     
+                      required: true,
                     })}
                     placeholder="Confirm password"
                     className="input input-bordered"
@@ -206,7 +216,10 @@ const Register = () => {
             </form>
             <p className="text-end text-2xl">
               <small>
-                Already have an account ? <Link to="/login"><button className="btn btn-link"> Login</button></Link>
+                Already have an account ?{" "}
+                <Link to="/login">
+                  <button className="btn btn-link"> Login</button>
+                </Link>
               </small>
             </p>
             <SocialLogin></SocialLogin>

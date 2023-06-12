@@ -17,7 +17,7 @@ const EnrolledClass = () => {
         <table className="table w-full">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="bg-black text-white">
               <th>#</th>
               <th>Image</th>
               <th>Class Name</th>

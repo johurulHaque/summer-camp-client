@@ -33,7 +33,7 @@ const ManageClasses = () => {
       <h2 className="text-center">Admin/Manage Classes</h2>
         <table className="table">
           {/* head */}
-          <thead>
+          <thead className="bg-black text-white">
             <tr>
               <th>Image</th>
               <th>Name</th>

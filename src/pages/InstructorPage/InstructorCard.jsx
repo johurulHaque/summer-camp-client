@@ -6,24 +6,21 @@ const InstructorCard = ({instructor}) => {
     <div className="card card-side bg-base-100 shadow-xl">
       <figure>
         <img
-          src={image}
+          src={image ? image : `https://i.ibb.co/g3fWchc/images.png`}
           alt="Movie"
         />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
         {
-            email && <p>Email {email}</p>
+            email && <p><span className="text-accent font-semibold"> Email:</span> {email}</p>
         }
         {
-            number && <p>Number {number}</p>
+            number && <p><span className="text-accent font-semibold"> Number:</span> {number}</p>
         }
         {
-            address && <p>Number {address}</p>
-        }
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Watch</button>
-        </div>
+            address && <p><span className="text-accent font-semibold"> Address:</span> {address}</p>
+        }       
       </div>
     </div>
   );

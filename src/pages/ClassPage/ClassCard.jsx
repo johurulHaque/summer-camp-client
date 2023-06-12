@@ -4,6 +4,7 @@ import useAuth from '../../hooks/useAuth';
 import useCart from '../../hooks/useCart';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { FaTimes } from 'react-icons/fa';
 
 
 const ClassCard = ({approvedClass,role}) => {    
@@ -69,9 +70,9 @@ const ClassCard = ({approvedClass,role}) => {
         <div className="card-body" style={{ background: (seats) ? '' : 'red' }}>
           <h2 className="card-title">
             {name}
-            <div className="badge badge-secondary">{price}</div>
+            <div className="badge badge-secondary">$ {price}</div>
           </h2>
-          <p>{instructorName}</p>
+          <p><span className="text-xl font-semibold">Instructor name:</span> {instructorName}</p>
           <div className="card-actions justify-end">
             <div className="badge  badge-primary badge-outline">
               Available {seats} seats
@@ -82,7 +83,7 @@ const ClassCard = ({approvedClass,role}) => {
           </div>
           <div>
             {
-                ((role == "instructor" || role == "admin") || (seats == 0))  ? <button className='btn btn-primary btn-outline' disabled  >Select</button> :  <button className='btn btn-primary btn-outline' onClick={handleAddToCart} >Select</button>
+                ((role == "instructor" || role == "admin") || (seats == 0))  ? <button className='btn  btn-block btn-outline text-white' disabled  >Select <FaTimes></FaTimes></button> :  <button className='btn btn-accent btn-block text-white' onClick={handleAddToCart} >Select</button>
             }
            
           </div>

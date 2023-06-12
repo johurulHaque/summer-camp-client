@@ -16,7 +16,7 @@ const ManageUser = () => {
         if (data.modifiedCount) {
           refetch();
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: `Role is changed to admin!`,
             showConfirmButton: false,
@@ -36,7 +36,7 @@ const handleMakeInstructor = (user) =>{
           if (data.modifiedCount) {
             refetch();
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
               title: `Role is changed to instructor!`,
               showConfirmButton: false,
@@ -52,7 +52,7 @@ const handleMakeInstructor = (user) =>{
         <h2 className="text-center text-2xl">Admin/Manage Users</h2>
         <table className="table">
           {/* head */}
-          <thead>
+          <thead className="bg-black text-white">
             <tr>
               <th>Name</th>
               <th>Email</th>
