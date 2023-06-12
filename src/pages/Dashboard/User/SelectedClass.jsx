@@ -41,7 +41,7 @@ const SelectedClass = () => {
           <title>Bistro Boss | My Cart</title>
         </Helmet> */}
       <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
-        <h3 className="text-3xl">Total Items: {cart.length}</h3>
+        <h3 className="text-3xl">Total Selected Class: {cart.length}</h3>
         <h3 className="text-3xl">Total Price: ${total}</h3>
       </div>
       <div className="overflow-x-auto w-full">
@@ -55,6 +55,7 @@ const SelectedClass = () => {
               <th>Instructor Name</th>
               <th>Price</th>
               <th>Action</th>
+              <th>Payment</th>
             </tr>
           </thead>
           <tbody>

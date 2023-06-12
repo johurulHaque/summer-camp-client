@@ -6,7 +6,7 @@ const InstructorCard = ({instructor}) => {
     <div className="card card-side bg-base-100 shadow-xl">
       <figure>
         <img
-          src={image ? image : `https://i.ibb.co/g3fWchc/images.png`}
+          src={image ? image : `https://i.ibb.co/Jd4SLjf/images-1.jpg`}
           alt="Movie"
         />
       </figure>

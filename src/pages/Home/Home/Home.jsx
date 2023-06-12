@@ -8,15 +8,18 @@ const Home = () => {
   return (
     <div>
       <Slider></Slider>
-      <h2 className="text-3xl text-center mt-4 text-accent font-semibold">
+      <h2 className="text-3xl text-center mt-6 text-accent font-semibold">
         ---- Popular Classes ----
       </h2>
       <Popular></Popular>
-      <h2 className="text-3xl text-center mt-4 text-accent font-semibold">
+      <h2 className="text-3xl text-center mt-6 text-accent font-semibold">
         ---- Popular Instructors ----
       </h2>
       <PopularInstructor></PopularInstructor>
-      <Marquee>
+      <h2 className="text-3xl text-center mt-6 text-accent font-semibold">
+        ---- Our Brand Partner ----
+      </h2>
+      <Marquee className="mt-4">
         <img src="./a.jpg" alt=""  className="w-28 h-w-28"/>
         <img src="./b.jpg" alt=""  className="w-28 h-w-28"/>
         <img src="./c.jpg" alt=""  className="w-28 h-w-28"/>
