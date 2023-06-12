@@ -1,10 +1,6 @@
 * Sort out of some feature of ToysHome.
-<img
-src=“./logo.png”
-raw=true
-alt=“Subject Pronouns”
-style=“margin-right: 10px;”
-/>
+![Test Image 3](/logo.png)
+
 
    *  This is about toy market place. Some Feature is enabled here.
    *  In this site new seller can register here for further purpose.
